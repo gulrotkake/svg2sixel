@@ -2,6 +2,12 @@
 name = "svg2sixel"
 version = "0.1.0"
 edition = "2021"
+description = "Render a SVG as sixel for display in terminal"
+keywords = ["sixel", "svg"]
+license = "Apache-2.0"
+readme = "README.md"
+homepage = "https://github.com/gulrotkake/svg2sixel"
+repository = "https://github.com/gulrotkake/svg2sixel"
 
 [lib]
 name = "svg2sixel"
