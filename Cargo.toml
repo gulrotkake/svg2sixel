@@ -1,6 +1,6 @@
 [package]
 name = "svg2sixel"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 description = "Render a SVG as sixel for display in terminal"
 keywords = ["sixel", "svg"]
@@ -12,6 +12,10 @@ repository = "https://github.com/gulrotkake/svg2sixel"
 [lib]
 name = "svg2sixel"
 path = "src/lib.rs"
+
+[[bin]]
+name = "svg2sixel"
+path = "src/main.rs"
 
 [dependencies]
 clap = { version = "4.5.7", features = ["derive"] }
