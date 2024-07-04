@@ -1,5 +1,5 @@
 # svg2sixel
-Render a SVG as sixel for display in terminals
+Renders a SVG as sixels for display in terminals
 
 ## Usage
 
