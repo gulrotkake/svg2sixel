@@ -25,7 +25,7 @@ pub fn svg2sixel(svg: &str) -> Result<String, Svg2SixelError> {
     let mut options = Options::default();
     options.fontdb_mut().load_system_fonts();
 
-    let rtree = Tree::from_str(svg, &options).map_err(|err| Svg2SixelError::Usvg(err))?;
+    let rtree = Tree::from_str(svg, &options).map_err(Svg2SixelError::Usvg)?;
     let pixmap_size = rtree.size();
     let mut pixmap = Pixmap::new(pixmap_size.width() as u32, pixmap_size.height() as u32)
         .ok_or(Svg2SixelError::BadSize)?;
@@ -43,5 +43,5 @@ pub fn svg2sixel(svg: &str) -> Result<String, Svg2SixelError> {
         sixel_bytes::PixelFormat::RGBA8888,
         sixel_bytes::DiffusionMethod::Stucki,
     )
-    .map_err(|err| Svg2SixelError::Sixel(err))
+    .map_err(Svg2SixelError::Sixel)
 }
