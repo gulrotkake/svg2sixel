@@ -12,8 +12,20 @@ struct Args {
 fn main() {
     let args = Args::parse();
 
-    match svg2sixel::svg2sixel(&args.filename.contents().unwrap()) {
-        Ok(data) => println!("{data}"),
-        Err(err) => eprintln!("{err}"),
+    let mut kitty = false;
+    if let Ok(term) = std::env::var("TERM") {
+        kitty = term.contains("kitty") || term.contains("ghostty");
+    }
+
+    if kitty {
+        match svg2sixel::svg2sixel(&args.filename.contents().unwrap()) {
+            Ok(data) => println!("{data}"),
+            Err(err) => eprintln!("{err}"),
+        }
+    } else {
+        match svg2sixel::svg2kitty(&args.filename.contents().unwrap()) {
+            Ok(data) => println!("{data}"),
+            Err(err) => eprintln!("{err}"),
+        }
     }
 }
